@@ -1,8 +1,8 @@
 package objects.obstacles;
 
-public class SwitchedDoubleDeflector extends DoubleDeflector implements SwitchedObstacle {
+public class SwitchedDoubleDeflector {
 	
-	public SwitchedDoubleDeflector(int row, int col, Type face) {
+	/*public SwitchedDoubleDeflector(int row, int col, Type face) {
 		super(row, col, face);
 	}
 	
@@ -42,5 +42,5 @@ public class SwitchedDoubleDeflector extends DoubleDeflector implements Switched
 	
 	public Obstacle copy() {
 		return new SwitchedDoubleDeflector(row, leftCol, init);
-	}
+	}*/
 }

@@ -1,7 +1,7 @@
 package objects.obstacles;
 
-public class RedSwitch extends Switch {
-	public RedSwitch(int row, int col) {
+public class RedSwitch {
+	/*public RedSwitch(int row, int col) {
 		super(row, col);
 	}
 	
@@ -18,5 +18,5 @@ public class RedSwitch extends Switch {
 	
 	public Obstacle copy() {
 		return new RedSwitch(row, col);
-	}
+	}*/
 }

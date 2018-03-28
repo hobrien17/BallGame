@@ -19,6 +19,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import objects.Board;
 import objects.obstacles.Obstacle;
 
 public class View {
@@ -35,8 +36,8 @@ public class View {
 	ImageView arrow;
 	ImageView popup;
 	
-	final static int WIDTH = 390;
-	final static int HEIGHT = 650;
+	final static int WIDTH = Board.COLS*Board.GRIDSIZE;
+	final static int HEIGHT = Board.ROWS*Board.GRIDSIZE;
 	final static int POPUPWIDTH = 200;
 	final static int POPUPHEIGHT = 100;
 	//6p popup border
@@ -45,11 +46,9 @@ public class View {
 	public View() {
 		mainPane = new Pane();
 		gridPane = new GridPane();
-		gridPane.setHgap(1);
-		gridPane.setVgap(1);
 		mainPane.getChildren().add(gridPane);
 				
-		setBG();
+		//setBG();
 		
 		scene = new Scene(mainPane, WIDTH, HEIGHT);
 	}
@@ -58,7 +57,34 @@ public class View {
 		return scene;
 	}
 	
-	public void addObstacles(Obstacle[][] arr) {
+	public void drawBoard(Board board) {
+		images = new ImageView[Board.COLS][Board.ROWS];
+		for(int i = 0; i < Board.COLS; i++) {
+			for(int j = 0; j < Board.ROWS; j++) {
+				updateCell(board, j, i);
+			}
+		}
+	}
+	
+	public void updateCell(Board board, int row, int col) {
+		if(images[col][row] != null) { //to stop NPE during setup
+			gridPane.getChildren().remove(images[col][row]);
+		}
+		Obstacle[][] obs = board.getObstacles();
+		Obstacle[][] clickMap = board.getClickMap();
+		
+		if(obs[col][row] != null) {
+			ImageView im = new ImageView(obs[col][row].getImgURL());
+			images[col][row] = im;
+			gridPane.add(im, col, row, obs[col][row].colsOccupied(), 1);
+		} else if(clickMap[col][row] == null) {
+			ImageView im = new ImageView("file:resources/Empty.png");
+			images[col][row] = im;
+			gridPane.add(im, col, row);
+		}
+	}
+	
+	/*public void addObstacles(Obstacle[][] arr) {
 		images = new ImageView[arr.length][arr[0].length];
 		for(int i = 0; i < arr.length; i++) {
 			for(int j = 0; j < arr[0].length; j++) {
@@ -88,7 +114,7 @@ public class View {
 		
 		images[col][row] = im;
 		gridPane.add(im, col, row);
-	}
+	}*/
 	
 	public void addArrow(int row, int col) {
 		arrow = new ImageView("file:resources/Arrow.png");
@@ -138,15 +164,15 @@ public class View {
 		mainPane.getChildren().remove(popup);
 	}
 	
-	public void showTutorial(String imgURL) {
+	/*public void showTutorial(String imgURL) {
 		popup = new ImageView(imgURL);
 		popup.setX(0);
 		popup.setY(0);
 		mainPane.getChildren().add(popup);
 		popup.setOnMouseReleased(clickHandler);
-	}
+	}*/
 	
-	private void setBG() {
+	/*private void setBG() {
 		File file = new File("resources/Board.png");
 		Image image = new Image(file.toURI().toString());
 		BackgroundSize backgroundSize = new BackgroundSize(100, 100, true, true, true, false);
@@ -154,11 +180,11 @@ public class View {
 				BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, backgroundSize);
 		Background bg = new Background(backgroundImage);
 		mainPane.backgroundProperty().set(bg);
-	}
+	}*/
 	
 	public void addClickHandler(EventHandler<MouseEvent> handler) {
 		clickHandler = handler;
-		gridPane.setOnMouseReleased(clickHandler);
+		gridPane.setOnMouseClicked(clickHandler);
 	}
 	
 	public void clear() {

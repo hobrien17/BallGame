@@ -5,8 +5,8 @@ import java.lang.reflect.Method;
 import objects.Ball;
 import objects.Ball.Dir;
 
-public class Switch implements SwitchedObstacle {
-	private final static int GRIDSIZE = 65;
+public class Switch {
+	/*private final static int GRIDSIZE = 65;
 	
 	int row;
 	int col;
@@ -42,8 +42,9 @@ public class Switch implements SwitchedObstacle {
 		return row*GRIDSIZE;
 	}
 	
-	public int getXHit(Ball.Dir incomingDir) {
-		return col*GRIDSIZE + GRIDSIZE/2;
+	public int[] getXHit(Ball.Dir incomingDir) {
+		int[] arr = {col*GRIDSIZE + GRIDSIZE/2};
+		return arr;
 	}
 	
 	public int getYHit(Ball.Dir incomingDir) {
@@ -97,6 +98,6 @@ public class Switch implements SwitchedObstacle {
 	@Override
 	public Obstacle copy() {
 		return new Switch(row, col);
-	}
+	}*/
 
 }

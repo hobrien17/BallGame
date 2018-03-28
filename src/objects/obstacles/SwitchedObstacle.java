@@ -1,5 +1,5 @@
 package objects.obstacles;
 
-public interface SwitchedObstacle extends Obstacle {
+public interface SwitchedObstacle {
 	public void switchChange();
 }

@@ -1,0 +1,8 @@
+[
+	{
+		"lno": 1, "start": 4, "time": 3, "tute": "", "data": [
+			{"col": 4, "row": 1, "type": "TARGET"},
+			{"col": 4, "row": 4, "type": "DEFLECTOR_R"}
+		]
+	}
+]

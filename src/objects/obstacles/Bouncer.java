@@ -3,80 +3,50 @@ package objects.obstacles;
 import java.lang.reflect.Method;
 
 import objects.Ball;
+import objects.Board;
 
-public class Bouncer implements Obstacle {
-private final static int GRIDSIZE = 65;
-	
-	private int row;
-	private int col;
+public class Bouncer extends Obstacle {
 	
 	public enum Type {
 		LR,
 		UD
 	}
 	
-	private Type face;
+	private Type type;
 	private Type init;
 	
-	public Bouncer(int row, int col, Type face) {
-		this.row = row;
-		this.col = col;
-		this.init = face;
-		this.face = face;
-	}
-	
-	public int getRow() {
-		return row;
-	}
-	
-	public int getCol() {
-		return col;
-	}
-	
-	public int getXPos() {
-		return col*GRIDSIZE;
-	}
-	
-	public int getYPos() {
-		return row*GRIDSIZE;
+	public Bouncer(int row, int col, Type type) {
+		super(row, col);
+		this.init = type;
+		this.type = type;
 	}
 	
 	public int getXHit(Ball.Dir incomingDir) {
-		switch(face) {
+		switch(type) {
 		case LR:
 			if(incomingDir.equals(Ball.Dir.RIGHT)) {
-				return col*GRIDSIZE;
-			}
-			else if(incomingDir.equals(Ball.Dir.LEFT)) {
-				return col*GRIDSIZE + GRIDSIZE - 1;
-			}
-			else {
-				return -1;
+				return col*Board.GRIDSIZE;
+			} else if(incomingDir.equals(Ball.Dir.LEFT)) {
+				return col*Board.GRIDSIZE + Board.GRIDSIZE - 1;
 			}
 		case UD:
-			return col*GRIDSIZE + GRIDSIZE/2;
-		default:
-			return -1;
+			return col*Board.GRIDSIZE + Board.GRIDSIZE/2;
 		}
+		return -1;
 	}
 	
 	public int getYHit(Ball.Dir incomingDir) {
-		switch(face) {
+		switch(type) {
 		case LR:
-			return row*GRIDSIZE + GRIDSIZE/2;
+			return row*Board.GRIDSIZE + Board.GRIDSIZE/2;
 		case UD:
 			if(incomingDir.equals(Ball.Dir.DOWN)) {
-				return row*GRIDSIZE;
+				return row*Board.GRIDSIZE;
+			} else if(incomingDir.equals(Ball.Dir.UP)) {
+				return row*Board.GRIDSIZE + Board.GRIDSIZE - 1;
 			}
-			else if(incomingDir.equals(Ball.Dir.UP)) {
-				return row*GRIDSIZE + GRIDSIZE - 1;
-			}
-			else {
-				return -1;
-			}
-		default:
-			return -1;
 		}
+		return -1;
 	}
 	
 	public int colsOccupied() {
@@ -84,7 +54,7 @@ private final static int GRIDSIZE = 65;
 	}
 	
 	public String getImgURL() {
-		switch(face) {
+		switch(type) {
 		case LR:
 			return "file:resources/BouncerLR.png";
 		case UD:
@@ -95,12 +65,12 @@ private final static int GRIDSIZE = 65;
 	}
 	
 	public void change() {
-		switch(face) {
+		switch(type) {
 		case LR:
-			face = Type.UD;
+			type = Type.UD;
 			break;
 		case UD:
-			face = Type.LR;
+			type = Type.LR;
 			break;
 		}
 	}
@@ -118,19 +88,19 @@ private final static int GRIDSIZE = 65;
 		}
 		
 		if(incomingDir.equals(Ball.Dir.LEFT) || incomingDir.equals(Ball.Dir.RIGHT)) {
-			switch(face) {
+			switch(type) {
 			case LR:
 				return rot;
 			case UD:
 				return noRot;
 			}
 		} else {
-			switch(face) {
+			switch(type) {
 			case LR:
 				return noRot;
 			case UD:
 				return rot;
-			}
+			}  
 		}
 		
 		return null;
@@ -138,5 +108,10 @@ private final static int GRIDSIZE = 65;
 	
 	public Obstacle copy() {
 		return new Bouncer(row, col, init);
+	}
+
+	@Override
+	public boolean destroyAfterHit() {
+		return false;
 	}
 }

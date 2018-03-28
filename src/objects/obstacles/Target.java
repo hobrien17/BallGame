@@ -3,40 +3,20 @@ package objects.obstacles;
 import java.lang.reflect.Method;
 
 import objects.Ball;
+import objects.Board;
 
-public class Target implements Obstacle {
-	private final static int GRIDSIZE = 65;
-	
-	int row;
-	int col;
+public class Target extends Obstacle {
 	
 	public Target(int row, int col) {
-		this.row = row;
-		this.col = col;
-	}
-	
-	public int getRow() {
-		return row;
-	}
-	
-	public int getCol() {
-		return col;
-	}
-	
-	public int getXPos() {
-		return col*GRIDSIZE;
-	}
-	
-	public int getYPos() {
-		return row*GRIDSIZE;
+		super(row, col);
 	}
 	
 	public int getXHit(Ball.Dir incomingDir) {
-		return col*GRIDSIZE + GRIDSIZE/2;
+		return col*Board.GRIDSIZE + Board.GRIDSIZE/2;
 	}
 	
 	public int getYHit(Ball.Dir incomingDir) {
-		return row*GRIDSIZE + GRIDSIZE/2;
+		return row*Board.GRIDSIZE + Board.GRIDSIZE/2;
 	}
 	
 	public int colsOccupied() {

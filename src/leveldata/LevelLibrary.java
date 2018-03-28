@@ -1,48 +1,25 @@
 package leveldata;
 
+import java.util.List;
+
 public class LevelLibrary {
 	
-	private final static Level[] LVLS = {
-			/*Introduction*/ new Level(1, 4, 3, Tutorial.GAMESTART, "TARGET: 4, 1", "DEFLECTOR_R: 4, 4"),
-			new Level(0, 4, 20, null, "DOUBLETARGET: 2, 3", "DOUBLETARGET: 1, 5", "TARGET: 4, 9",
-					"BOUNCER_LR: 0, 2", "BOUNCER_LR: 1, 3", "BOUNCER_LR: 5, 4", "BOUNCER_LR: 5, 5", "BOUNCER_LR: 0, 5",
-					"REDSWITCH: 1, 2", "REDSWITCH: 4, 4", "REDSWITCH: 4, 5", "SWITCH: 1, 9", "DEFLECTOR_L: 3, 4",
-					"DEFLECTOR_L: 2, 5", "DEFLECTOR_L: 0, 7", "DEFLECTOR_L: 1, 7", "DEFLECTOR_L: 2, 7",
-					"DEFLECTOR_L: 0, 8", "DEFLECTOR_L: 1, 8", "DEFLECTOR_L: 0, 9", "DEFLECTOR_L: 2, 9",
-					"DEFLECTOR_L: 4, 7", "SPIKEBLOCK: 4, 6", "SPIKEBLOCK: 5, 8", "REMOTEDEFLECTOR_LL: 2, 2",
-					"REMOTEDEFLECTOR_LL: 3, 3", "REMOTEDEFLECTOR_LL: 2, 6", "REMOTEDEFLECTOR_LL: 3, 8"),
-			new Level(0, 4, 5, null, "TARGET: 3, 2", "TARGET: 4, 2", "BOUNCER_UD: 1, 1", "REDSWITCH: 2, 1",
-					"SWITCH: 2, 4", "REMOTEDEFLECTOR_LL: 3, 1", "REMOTEDEFLECTOR_RL: 3, 4"),
-			new Level(0, 4, 20, null, "DOUBLETARGET: 4, 0", "DOUBLETARGET: 2, 3", "DOUBLETARGET: 3, 7", 
-					"DOUBLETARGET: 4, 8", "DOUBLETARGET: 0, 8",
-					"SPIKEBLOCK: 1, 0", "SPIKEBLOCK: 1, 1", "SPIKEBLOCK: 1, 2", "SPIKEBLOCK: 1, 3",
-					"SPIKEBLOCK: 4, 1", "SPIKEBLOCK: 4, 2", "SPIKEBLOCK: 4, 3", "SPIKEBLOCK: 4, 4",
-					"SPIKEBLOCK: 0, 5", "SPIKEBLOCK: 1, 5", "BOUNCER_LR: 1, 4", "BOUNCER_UD: 2, 0",
-					"BOUNCER_LR: 5, 8", "DEFLECTOR_R: 3, 0", "DEFLECTOR_L: 5, 0",
-					"DEFLECTOR_RL: 2, 2", "DEFLECTOR_RL: 2, 1", "DEFLECTOR_R: 2, 4", "DEFLECTOR_R: 3, 4",
-					"SPIKEBLOCK: 3, 5", "DEFLECTOR_R: 4, 5", "DEFLECTOR_R: 5, 5", "DEFLECTOR_R: 4, 6",
-					"DEFLECTOR_R: 0, 7", "DEFLECTOR_R: 1, 7", "DEFLECTOR_R: 2, 7", "DEFLECTOR_R: 0, 9",
-					"DEFLECTOR_R: 1, 9", "DEFLECTOR_RL: 0, 6", "DEFLECTOR_RL: 2, 6", "DEFLECTOR_LR: 2, 8"),
-			new Level(0, 4, 30, null, "DOUBLETARGET: 1, 1", "DOUBLETARGET: 1, 0", "TARGET: 4, 2", "TARGET: 4, 5",
-					"TARGET: 0, 8",
-					"DEFLECTOR_R: 0, 0", "DEFLECTOR_L: 5, 0", "DEFLECTOR_R: 5, 9", "DEFLECTOR_L: 0, 9",
-					"DEFLECTOR_L: 2, 0", "DEFLECTOR_L: 3, 0", "DEFLECTOR_L: 4, 0", "DEFLECTOR_L: 5, 0",
-					"DEFLECTOR_L: 2, 1", "DEFLECTOR_L: 3, 1", "DEFLECTOR_RL: 4, 1", "DEFLECTOR_L: 1, 3",
-					"DEFLECTOR_L: 2, 3", "DEFLECTOR_L: 3, 3", "DEFLECTOR_L: 4, 3", "DEFLECTOR_L: 1, 4",
-					"DEFLECTOR_L: 2, 4", "DEFLECTOR_L: 3, 4", "DEFLECTOR_LL: 4, 4", "DEFLECTOR_L: 1, 6",
-					"DEFLECTOR_L: 2, 6", "DEFLECTOR_L: 3, 6", "DEFLECTOR_L: 4, 6", "DEFLECTOR_L: 0, 7", 
-					"DEFLECTOR_L: 1, 7", "DEFLECTOR_L: 2, 7", "DEFLECTOR_L: 3, 7", "SPIKEBLOCK: 0, 2",
-					"SPIKEBLOCK: 1, 2", "SPIKEBLOCK: 2, 2", "SPIKEBLOCK: 3, 2", "SPIKEBLOCK: 0, 5", 
-					"SPIKEBLOCK: 1, 5", "SPIKEBLOCK: 2, 5", "SPIKEBLOCK: 3, 5", "SPIKEBLOCK: 1, 8",
-					"SPIKEBLOCK: 2, 8", "SPIKEBLOCK: 3, 8", "SPIKEBLOCK: 4, 8", "DEFLECTOR_L: 0, 1"),
-			new Level(0, 4, 5, null, "TARGET: 5, 4", "SWITCH: 3, 4", "BOUNCER_UD: 4, 4", "BOUNCER_UD: 1, 4",
-					"REMOTEDEFLECTOR_LL: 0, 8", "REMOTEDEFLECTOR_RL: 0, 9"),
-			new Level(19, 4, 20, null, "TARGET: 2, 9", "DOUBLETARGET: 3, 0", "DOUBLETARGET: 1, 2",
-					"DOUBLETARGET: 4, 7", "DOUBLETARGET: 5, 7",
-					"DEFLECTOR_L: 1, 0", "DEFLECTOR_L: 5, 0", "DEFLECTOR_R: 1, 4", "DEFLECTOR_L: 1, 5",
-					"DEFLECTOR_RL: 1, 6", "DEFLECTOR_LR: 0, 7", "DEFLECTOR_LR: 0, 8", "DEFLECTOR_L: 4, 6",
-					"DEFLECTOR_R: 4, 8", "BOUNCER_LR: 5, 2", "BOUNCER_LR: 5, 9", "DEFLECTOR_RR: 4, 4",
-					"DEFLECTOR_LR: 4, 5"),
+	private static List<Level> levels;
+	
+	public static void loadLevels() {
+		levels = Level.getLevels("resources/lvls.json");
+	}
+	
+	public static Level getLevel(int lno) {
+		return levels.get(lno - 1);
+	}
+	
+	public static int getLevelCount() {
+		return levels.size();
+	}
+	
+	/*private final static Level[] LVLS = {
+			Introduction new Level(1, 4, 3, Tutorial.GAMESTART, "TARGET: 4, 1", "DEFLECTOR_R: 4, 4"),
 			new Level(1, 4, 5, Tutorial.CLICK, "TARGET: 4, 1", "DEFLECTOR_L: 4, 4"),
 			new Level(3, 4, 10, null, "TARGET: 2, 2", "TARGET: 1, 6", 
 					"DEFLECTOR_L: 1, 2", "DEFLECTOR_L: 4, 2", "DEFLECTOR_L: 4, 4"),
@@ -129,7 +106,45 @@ public class LevelLibrary {
 					"BOUNCER_UD: 0, 6", "DEFLECTOR_R: 1, 6", "DEFLECTOR_R: 2, 6", "DEFLECTOR_L: 0, 8",
 					"DEFLECTOR_L: 1, 8", "DEFLECTOR_LL: 2, 9", "BOUNCER_UD: 5, 9"),
 			new Level(18, 4, 5, null, "DOUBLETARGET: 2, 4", "BOUNCER_UD: 5, 4"),
-			
+			new Level(0, 4, 20, null, "DOUBLETARGET: 2, 3", "DOUBLETARGET: 1, 5", "TARGET: 4, 9",
+					"BOUNCER_LR: 0, 2", "BOUNCER_LR: 1, 3", "BOUNCER_LR: 5, 4", "BOUNCER_LR: 5, 5", "BOUNCER_LR: 0, 5",
+					"REDSWITCH: 1, 2", "REDSWITCH: 4, 4", "REDSWITCH: 4, 5", "SWITCH: 1, 9", "DEFLECTOR_L: 3, 4",
+					"DEFLECTOR_L: 2, 5", "DEFLECTOR_L: 0, 7", "DEFLECTOR_L: 1, 7", "DEFLECTOR_L: 2, 7",
+					"DEFLECTOR_L: 0, 8", "DEFLECTOR_L: 1, 8", "DEFLECTOR_L: 0, 9", "DEFLECTOR_L: 2, 9",
+					"DEFLECTOR_L: 4, 7", "SPIKEBLOCK: 4, 6", "SPIKEBLOCK: 5, 8", "REMOTEDEFLECTOR_LL: 2, 2",
+					"REMOTEDEFLECTOR_LL: 3, 3", "REMOTEDEFLECTOR_LL: 2, 6", "REMOTEDEFLECTOR_LL: 3, 8"),
+			new Level(0, 4, 5, null, "TARGET: 3, 2", "TARGET: 4, 2", "BOUNCER_UD: 1, 1", "REDSWITCH: 2, 1",
+					"SWITCH: 2, 4", "REMOTEDEFLECTOR_LL: 3, 1", "REMOTEDEFLECTOR_RL: 3, 4"),
+			new Level(0, 4, 20, null, "DOUBLETARGET: 4, 0", "DOUBLETARGET: 2, 3", "DOUBLETARGET: 3, 7", 
+					"DOUBLETARGET: 4, 8", "DOUBLETARGET: 0, 8",
+					"SPIKEBLOCK: 1, 0", "SPIKEBLOCK: 1, 1", "SPIKEBLOCK: 1, 2", "SPIKEBLOCK: 1, 3",
+					"SPIKEBLOCK: 4, 1", "SPIKEBLOCK: 4, 2", "SPIKEBLOCK: 4, 3", "SPIKEBLOCK: 4, 4",
+					"SPIKEBLOCK: 0, 5", "SPIKEBLOCK: 1, 5", "BOUNCER_LR: 1, 4", "BOUNCER_UD: 2, 0",
+					"BOUNCER_LR: 5, 8", "DEFLECTOR_R: 3, 0", "DEFLECTOR_L: 5, 0",
+					"DEFLECTOR_RL: 2, 2", "DEFLECTOR_RL: 2, 1", "DEFLECTOR_R: 2, 4", "DEFLECTOR_R: 3, 4",
+					"SPIKEBLOCK: 3, 5", "DEFLECTOR_R: 4, 5", "DEFLECTOR_R: 5, 5", "DEFLECTOR_R: 4, 6",
+					"DEFLECTOR_R: 0, 7", "DEFLECTOR_R: 1, 7", "DEFLECTOR_R: 2, 7", "DEFLECTOR_R: 0, 9",
+					"DEFLECTOR_R: 1, 9", "DEFLECTOR_RL: 0, 6", "DEFLECTOR_RL: 2, 6", "DEFLECTOR_LR: 2, 8"),
+			new Level(0, 4, 30, null, "DOUBLETARGET: 1, 1", "DOUBLETARGET: 1, 0", "TARGET: 4, 2", "TARGET: 4, 5",
+					"TARGET: 0, 8",
+					"DEFLECTOR_R: 0, 0", "DEFLECTOR_L: 5, 0", "DEFLECTOR_R: 5, 9", "DEFLECTOR_L: 0, 9",
+					"DEFLECTOR_L: 2, 0", "DEFLECTOR_L: 3, 0", "DEFLECTOR_L: 4, 0", "DEFLECTOR_L: 5, 0",
+					"DEFLECTOR_L: 2, 1", "DEFLECTOR_L: 3, 1", "DEFLECTOR_RL: 4, 1", "DEFLECTOR_L: 1, 3",
+					"DEFLECTOR_L: 2, 3", "DEFLECTOR_L: 3, 3", "DEFLECTOR_L: 4, 3", "DEFLECTOR_L: 1, 4",
+					"DEFLECTOR_L: 2, 4", "DEFLECTOR_L: 3, 4", "DEFLECTOR_LL: 4, 4", "DEFLECTOR_L: 1, 6",
+					"DEFLECTOR_L: 2, 6", "DEFLECTOR_L: 3, 6", "DEFLECTOR_L: 4, 6", "DEFLECTOR_L: 0, 7", 
+					"DEFLECTOR_L: 1, 7", "DEFLECTOR_L: 2, 7", "DEFLECTOR_L: 3, 7", "SPIKEBLOCK: 0, 2",
+					"SPIKEBLOCK: 1, 2", "SPIKEBLOCK: 2, 2", "SPIKEBLOCK: 3, 2", "SPIKEBLOCK: 0, 5", 
+					"SPIKEBLOCK: 1, 5", "SPIKEBLOCK: 2, 5", "SPIKEBLOCK: 3, 5", "SPIKEBLOCK: 1, 8",
+					"SPIKEBLOCK: 2, 8", "SPIKEBLOCK: 3, 8", "SPIKEBLOCK: 4, 8", "DEFLECTOR_L: 0, 1"),
+			new Level(0, 4, 5, null, "TARGET: 5, 4", "SWITCH: 3, 4", "BOUNCER_UD: 4, 4", "BOUNCER_UD: 1, 4",
+					"REMOTEDEFLECTOR_LL: 0, 8", "REMOTEDEFLECTOR_RL: 0, 9"),
+			new Level(19, 4, 20, null, "TARGET: 2, 9", "DOUBLETARGET: 3, 0", "DOUBLETARGET: 1, 2",
+					"DOUBLETARGET: 4, 7", "DOUBLETARGET: 5, 7",
+					"DEFLECTOR_L: 1, 0", "DEFLECTOR_L: 5, 0", "DEFLECTOR_R: 1, 4", "DEFLECTOR_L: 1, 5",
+					"DEFLECTOR_RL: 1, 6", "DEFLECTOR_LR: 0, 7", "DEFLECTOR_LR: 0, 8", "DEFLECTOR_L: 4, 6",
+					"DEFLECTOR_R: 4, 8", "BOUNCER_LR: 5, 2", "BOUNCER_LR: 5, 9", "DEFLECTOR_RR: 4, 4",
+					"DEFLECTOR_LR: 4, 5"),
 			new Level(-1, 4, 40, null, "TARGET: 3, 0", "TARGET: 0, 2", "TARGET: 3, 3", "TARGET: 2, 5", "TARGET: 5, 5", 
 					"TARGET: 3, 6", "TARGET: 1, 8", "TARGET: 0, 9", "TARGET: 3, 9",
 					"DEFLECTOR_L: 2, 0", "DEFLECTOR_LL: 4, 0", "DEFLECTOR_L: 0, 1", "DEFLECTOR_L: 1, 1",
@@ -149,5 +164,5 @@ public class LevelLibrary {
 	
 	public static int getLevelNum() {
 		return LVLS.length;
-	}
+	}*/
 }

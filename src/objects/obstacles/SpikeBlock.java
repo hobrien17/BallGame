@@ -4,8 +4,8 @@ import java.lang.reflect.Method;
 
 import objects.Ball.Dir;
 
-public class SpikeBlock implements Obstacle {
-	private final static int GRIDSIZE = 65;
+public class SpikeBlock {
+	/*private final static int GRIDSIZE = 65;
 	
 	private int row;
 	private int col;
@@ -36,14 +36,17 @@ public class SpikeBlock implements Obstacle {
 	}
 
 	@Override
-	public int getXHit(Dir incomingDir) {
+	public int[] getXHit(Dir incomingDir) {
 		switch(incomingDir) {
 		case RIGHT:
-			return col*GRIDSIZE;
+			int[] arr1 = {col*GRIDSIZE};
+			return arr1;
 		case LEFT:
-			return col*GRIDSIZE + GRIDSIZE - 1;
+			int[] arr2 = {col*GRIDSIZE + GRIDSIZE - 1};
+			return arr2;
 		default:
-			return col*GRIDSIZE + GRIDSIZE/2;
+			int[] arr3 = {col*GRIDSIZE + GRIDSIZE/2};
+			return arr3;
 		}
 	}
 
@@ -80,6 +83,6 @@ public class SpikeBlock implements Obstacle {
 	@Override
 	public Obstacle copy() {
 		return new SpikeBlock(row, col);
-	}
+	}*/
 
 }

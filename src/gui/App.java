@@ -1,6 +1,6 @@
 package gui;
 
-import game.Game;
+import game.LevelRunner;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.stage.Stage;
@@ -8,7 +8,7 @@ import leveldata.LevelLibrary;
 
 public class App extends Application {
 
-	private int level;
+	private int lno;
 	private Stage stage;
 
 	public static void main(String[] args) {
@@ -17,58 +17,61 @@ public class App extends Application {
 
 	@Override
 	public void start(Stage stage) throws Exception {
-		level = 1;
+		lno = 1;
+		LevelLibrary.loadLevels();
 		this.stage = stage;
 
 		setup();
 	}
 
 	private void setup() {
-		View view = new View();
-		Game game = new Game(view, level);
-		game.start();
-
-		stage.setScene(view.getScene());
-		stage.setTitle("Level " + level);
-		stage.setResizable(false);
-		stage.show();
-
-		new GameListener(game).start();
+		LevelRunner level = new LevelRunner(lno, this);
+		level.start();
+		//new LevelListener(level).start();
+	}
+	
+	public Stage getStage() {
+		return stage;
+	}
+	
+	public void nextLevel(LevelRunner level) {
+		if(level.getGameState() == LevelRunner.State.LEVEL_COMPLETE) {
+			lno++;
+		}
+		if (lno <= LevelLibrary.getLevelCount()) {
+			setup();
+		} else {
+			System.out.println("No more levels!");
+			Platform.exit();
+		}
 	}
 
-	private class GameListener extends Thread {
-		Game game;
+	/*private class LevelListener extends Thread {
+		LevelRunner level;
 
-		GameListener(Game game) {
-			this.game = game;
+		LevelListener(LevelRunner level) {
+			this.level = level;
 		}
 
 		@Override
 		public void run() {
-			synchronized (game) {
-				while (game.getGameState().equals("ONGOING")) {
-					try {
-						game.wait();
-					} catch (InterruptedException ex) {
-						ex.printStackTrace();
-					}
-				}
-				if (game.getGameState().equals("NEXTLEVEL")) {
-					level++;
-				}
-				if (level <= LevelLibrary.getLevelNum()) {
-					System.out.println("end");
-					Platform.runLater(new Runnable() {
-						@Override
-						public void run() {
-							stage.hide();
-							setup();
-						}
-					});
-				} else {
-					System.out.println("No more levels!");
+			synchronized(level.getNotifier()) {
+				try {
+					level.getNotifier().wait();
+				} catch (InterruptedException ex) {
+					// TODO Auto-generated catch block
+					ex.printStackTrace();
 				}
 			}
+			if (level.getGameState() == LevelRunner.State.LEVEL_COMPLETE) {
+				lno++;
+			}
+			if (lno <= LevelLibrary.getLevelCount()) {
+				setup();
+			} else {
+				System.out.println("No more levels!");
+				Platform.exit();
+			}
 		}
-	}
+	}*/
 }
