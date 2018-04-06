@@ -6,6 +6,7 @@ import javafx.event.EventHandler;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import objects.Board;
+import objects.obstacles.Bouncer;
 import objects.obstacles.Deflector;
 import objects.obstacles.DoubleTarget;
 import objects.obstacles.LeftDoubleDeflector;
@@ -126,20 +127,23 @@ public class CreatorController {
 			System.out.println("press!");
 			
 			switch(event.getCode()) {
-			case DIGIT1:
+			case T:
 				selected = new Target(-1, -1);
 				break;
-			case DIGIT2:
+			case Y:
 				selected = new DoubleTarget(-1, -1);
 				break;
-			case DIGIT3:
+			case DIGIT1:
 				selected = new Deflector(-1, -1, Deflector.Type.LEFT);
 				break;
-			case DIGIT4:
+			case DIGIT2:
 				selected = new LeftDoubleDeflector(-1, -1, LeftDoubleDeflector.Type.LEFT);
 				break;
-			case DIGIT5:
+			case DIGIT3:
 				selected = new RightDoubleDeflector(-1, -1, RightDoubleDeflector.Type.LEFT);
+				break;
+			case DIGIT4:
+				selected = new Bouncer(-1, -1, Bouncer.Type.LR);
 				break;
 			case S:
 				selected = new BallStart(-1, -1);

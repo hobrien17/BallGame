@@ -114,4 +114,13 @@ public class Bouncer extends Obstacle {
 	public boolean destroyAfterHit() {
 		return false;
 	}
+	
+	@Override
+	public String toString() {
+		if(type == Type.UD) {
+			return "BOUNCER_UD";
+		} else {
+			return "BOUNCER_LR";
+		}
+	}
 }
