@@ -97,10 +97,18 @@ public class CreatorController {
 		@Override
 		public void handle(MouseEvent event) {
 			if(event.isAltDown()) {
-				placed[view.getCell((int)event.getSceneX())]
-						[view.getCell((int)event.getSceneY())] = null;
-				view.clearPlacedObs(view.getCell((int)event.getSceneX()), 
-						view.getCell((int)event.getSceneY()));
+				Obstacle obs;
+				if((obs = placed[view.getCell((int)event.getSceneX())]
+						[view.getCell((int)event.getSceneY())]) != null) {
+					placed[view.getCell((int)event.getSceneX())]
+							[view.getCell((int)event.getSceneY())] = null;
+					for(int i = 0; i < obs.colsOccupied(); i++) {
+						view.clearPlacedObs(view.getCell((int)event.getSceneX() + i), 
+								view.getCell((int)event.getSceneY()));
+					}
+				}
+				
+				
 			} else if(selected != null) {
 				placed[view.getCell((int)event.getSceneX())]
 						[view.getCell((int)event.getSceneY())] = selected;
