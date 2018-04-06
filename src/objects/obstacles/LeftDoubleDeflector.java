@@ -27,7 +27,7 @@ public class LeftDoubleDeflector extends DoubleDeflector {
 		case LEFT:
 			return "file:resources/DeflectorLL.png";
 		case RIGHT:
-			return "file:resources/DeflectorRL.png";
+			return "file:resources/DeflectorLR.png";
 		default:
 			return null;
 		}
@@ -35,5 +35,13 @@ public class LeftDoubleDeflector extends DoubleDeflector {
 	
 	public Obstacle copy() {
 		return new LeftDoubleDeflector(row, col, init);
+	}
+	
+	public String toString() {
+		if(type == Type.LEFT) {
+			return "DEFLECTOR_LL";
+		} else {
+			return "DEFLECTOR_LR";
+		}
 	}
 }

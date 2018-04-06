@@ -25,7 +25,7 @@ public class RightDoubleDeflector extends DoubleDeflector {
 	public String getImgURL() {
 		switch(type) {
 		case LEFT:
-			return "file:resources/DeflectorLR.png";
+			return "file:resources/DeflectorRL.png";
 		case RIGHT:
 			return "file:resources/DeflectorRR.png";
 		default:
@@ -35,5 +35,13 @@ public class RightDoubleDeflector extends DoubleDeflector {
 	
 	public Obstacle copy() {
 		return new RightDoubleDeflector(row, col, init);
+	}
+	
+	public String toString() {
+		if(type == Type.LEFT) {
+			return "DEFLECTOR_RL";
+		} else {
+			return "DEFLECTOR_RR";
+		}
 	}
 }

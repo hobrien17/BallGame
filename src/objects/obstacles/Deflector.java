@@ -69,4 +69,12 @@ public class Deflector extends Obstacle {
 	public Obstacle copy() {
 		return new Deflector(row, col, init);
 	}
+	
+	public String toString() {
+		if(type == Type.LEFT) {
+			return "DEFLECTOR_L";
+		} else {
+			return "DEFLECTOR_R";
+		}
+	}
 }

@@ -46,4 +46,8 @@ public class Target extends Obstacle {
 	public Obstacle copy() {
 		return new Target(row, col);
 	}
+	
+	public String toString() {
+		return "TARGET";
+	}
 }

@@ -39,4 +39,8 @@ public class DoubleTarget extends Target {
 	public Target toTarget() {
 		return new Target(row, col);
 	}
+	
+	public String toString() {
+		return "DOUBLETARGET";
+	}
 }

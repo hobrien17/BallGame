@@ -14,7 +14,7 @@ public class Board {
 	private int targets;
 	
 	public final static int ROWS = 10;
-	public final static int COLS = 6;
+	public final static int COLS = 10;
 	public final static int GRIDSIZE = 65;
 	
 	public Board(Level leveldata) {
