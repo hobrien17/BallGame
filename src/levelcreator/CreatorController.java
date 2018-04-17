@@ -6,13 +6,7 @@ import javafx.event.EventHandler;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import objects.Board;
-import objects.obstacles.Bouncer;
-import objects.obstacles.Deflector;
-import objects.obstacles.DoubleTarget;
-import objects.obstacles.LeftDoubleDeflector;
-import objects.obstacles.Obstacle;
-import objects.obstacles.RightDoubleDeflector;
-import objects.obstacles.Target;
+import objects.obstacles.*;
 
 public class CreatorController {
 	
@@ -104,8 +98,10 @@ public class CreatorController {
 					placed[view.getCell((int)event.getSceneX())]
 							[view.getCell((int)event.getSceneY())] = null;
 					for(int i = 0; i < obs.colsOccupied(); i++) {
-						view.clearPlacedObs(view.getCell((int)event.getSceneX() + i), 
-								view.getCell((int)event.getSceneY()));
+						for(int j = 0; j < obs.rowsOccupied(); j++) {
+							view.clearPlacedObs(view.getCell((int)event.getSceneX() + i), 
+									view.getCell((int)event.getSceneY() + j));
+						}
 					}
 				}
 				
@@ -143,7 +139,16 @@ public class CreatorController {
 				selected = new RightDoubleDeflector(-1, -1, RightDoubleDeflector.Type.LEFT);
 				break;
 			case DIGIT4:
+				selected = new LeftVDeflector(-1, -1, VDeflector.Type.UP);
+				break;
+			case DIGIT5:
+				selected = new RightVDeflector(-1, -1, VDeflector.Type.UP);
+				break;
+			case DIGIT6:
 				selected = new Bouncer(-1, -1, Bouncer.Type.LR);
+				break;
+			case DIGIT7:
+				selected = new Rotator(-1, -1, Rotator.Type.NW);
 				break;
 			case S:
 				selected = new BallStart(-1, -1);

@@ -51,7 +51,9 @@ public abstract class Obstacle {
 	public abstract int getXHit(Ball.Dir incomingDir);
 	public abstract int getYHit(Ball.Dir incomingDir);
 	public abstract int colsOccupied();
+	public abstract int rowsOccupied();
 	public abstract boolean destroyAfterHit();
+	public abstract boolean canClick();
 	public abstract String getImgURL();
 	public abstract Obstacle copy();
 	

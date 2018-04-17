@@ -25,7 +25,6 @@ public class DoubleTarget extends Target {
 		try {
 			return Ball.class.getMethod("noRotate");
 		} catch (NoSuchMethodException | SecurityException ex) {
-			// TODO Auto-generated catch block
 			ex.printStackTrace();
 			return null;
 		}

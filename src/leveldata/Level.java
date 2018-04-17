@@ -74,6 +74,14 @@ public class Level {
 			return new LeftDoubleDeflector(row, col, DoubleDeflector.Type.LEFT);
 		case "DEFLECTOR_LR":
 			return new LeftDoubleDeflector(row, col, DoubleDeflector.Type.RIGHT);
+		case "DEFLECTOR_RU":
+			return new RightVDeflector(row, col, VDeflector.Type.UP);
+		case "DEFLECTOR_RD":
+			return new RightVDeflector(row, col, VDeflector.Type.DOWN);
+		case "DEFLECTOR_LU":
+			return new LeftVDeflector(row, col, VDeflector.Type.UP);
+		case "DEFLECTOR_LD":
+			return new LeftVDeflector(row, col, VDeflector.Type.DOWN);
 		case "TARGET":
 			return new Target(row, col);
 		case "BOUNCER_LR":
@@ -82,6 +90,14 @@ public class Level {
 			return new Bouncer(row, col, Bouncer.Type.UD);
 		case "DOUBLETARGET":
 			return new DoubleTarget(row, col);
+		case "ROTATOR_NW":
+			return new Rotator(row, col, Rotator.Type.NW);
+		case "ROTATOR_NE":
+			return new Rotator(row, col, Rotator.Type.NE);
+		case "ROTATOR_SE":
+			return new Rotator(row, col, Rotator.Type.SE);
+		case "ROTATOR_SW":
+			return new Rotator(row, col, Rotator.Type.SW);
 		/*case "SPIKEBLOCK":
 			return new SpikeBlock(oRow, oCol);
 		case "SWITCH":

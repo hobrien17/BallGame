@@ -74,13 +74,13 @@ public class CreatorView {
 				gridPane.getChildren().remove(curObs);
 			}
 			curObs = img;
-			gridPane.add(curObs, getCell(x), getCell(y), obs.colsOccupied(), 1);
+			gridPane.add(curObs, getCell(x), getCell(y), obs.colsOccupied(), obs.rowsOccupied());
 		}
 	}
 	
 	public void placeObs(Obstacle obs, int x, int y) {
 		ImageView img = new ImageView(obs.getImgURL());
-		gridPane.add(img, getCell(x), getCell(y), obs.colsOccupied(), 1);
+		gridPane.add(img, getCell(x), getCell(y), obs.colsOccupied(), obs.rowsOccupied());
 	}
 	
 	public int getCell(int x) {

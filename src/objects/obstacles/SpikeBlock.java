@@ -2,68 +2,43 @@ package objects.obstacles;
 
 import java.lang.reflect.Method;
 
+import objects.Board;
 import objects.Ball.Dir;
 
-public class SpikeBlock {
-	/*private final static int GRIDSIZE = 65;
-	
-	private int row;
-	private int col;
+public class SpikeBlock extends Obstacle {
 	
 	public SpikeBlock(int row, int col) {
-		this.row = row;
-		this.col = col;
+		super(row, col);
 	}
-
-	@Override
-	public int getRow() {
-		return row;
-	}
-
-	@Override
-	public int getCol() {
-		return col;
-	}
-
-	@Override
-	public int getXPos() {
-		return col*GRIDSIZE;
-	}
-
-	@Override
-	public int getYPos() {
-		return row*GRIDSIZE;
-	}
-
-	@Override
-	public int[] getXHit(Dir incomingDir) {
+	
+	public int getXHit(Dir incomingDir) {
 		switch(incomingDir) {
 		case RIGHT:
-			int[] arr1 = {col*GRIDSIZE};
-			return arr1;
+			return col*Board.GRIDSIZE;
 		case LEFT:
-			int[] arr2 = {col*GRIDSIZE + GRIDSIZE - 1};
-			return arr2;
+			return col*Board.GRIDSIZE + Board.GRIDSIZE - 1;
 		default:
-			int[] arr3 = {col*GRIDSIZE + GRIDSIZE/2};
-			return arr3;
+			return col*Board.GRIDSIZE + Board.GRIDSIZE/2;
 		}
 	}
 
-	@Override
 	public int getYHit(Dir incomingDir) {
 		switch(incomingDir) {
 		case DOWN:
-			return row*GRIDSIZE;
+			return row*Board.GRIDSIZE;
 		case UP:
-			return row*GRIDSIZE + GRIDSIZE - 1;
+			return row*Board.GRIDSIZE + Board.GRIDSIZE - 1;
 		default:
-			return row*GRIDSIZE + GRIDSIZE/2;
+			return row*Board.GRIDSIZE + Board.GRIDSIZE/2;
 		}
 	}
 
 	@Override
 	public int colsOccupied() {
+		return 1;
+	}
+	
+	public int rowsOccupied() {
 		return 1;
 	}
 
@@ -72,7 +47,7 @@ public class SpikeBlock {
 
 	@Override
 	public Method getDirChange(Dir incomingDir) {
-		throw new ArrayIndexOutOfBoundsException();
+		throw new IndexOutOfBoundsException();
 	}
 
 	@Override
@@ -83,6 +58,16 @@ public class SpikeBlock {
 	@Override
 	public Obstacle copy() {
 		return new SpikeBlock(row, col);
-	}*/
+	}
+
+	@Override
+	public boolean destroyAfterHit() {
+		return false;
+	}
+
+	@Override
+	public boolean canClick() {
+		return false;
+	}
 
 }

@@ -41,7 +41,9 @@ public class Board {
 			o = o.copy();
 			obstacles[o.getCol()][o.getRow()] = o;
 			for(int i = 0; i < o.colsOccupied(); i++) {
-				clickMap[o.getCol() + i][o.getRow()] = o;
+				for(int j = 0; j < o.rowsOccupied(); j++) {
+					clickMap[o.getCol() + i][o.getRow() + j] = o;
+				}
 			}
 			
 			if(o instanceof Target) {
@@ -70,7 +72,9 @@ public class Board {
 		Obstacle o = obstacles[col][row];
 		obstacles[col][row] = null;
 		for(int i = 0; i < o.colsOccupied(); i++) {
-			clickMap[col + i][row] = null;
+			for(int j = 0; j < o.rowsOccupied(); j++) {
+				clickMap[col + i][row + j] = null;
+			}
 		}
 	}
 	
@@ -78,7 +82,9 @@ public class Board {
 		removeObstacle(row, col);
 		obstacles[col][row] = newObs;
 		for(int i = 0; i < newObs.colsOccupied(); i++) {
-			clickMap[col + i][row] = newObs;
+			for(int j = 0; j < newObs.rowsOccupied(); j++) {
+				clickMap[col + i][row + j] = newObs;
+			}
 		}
 	}
 	

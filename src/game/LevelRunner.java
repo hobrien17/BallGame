@@ -95,10 +95,8 @@ public class LevelRunner extends Thread {
 					DoubleTarget dt = (DoubleTarget) obs;
 					Obstacle t = dt.toTarget();
 					board.replaceObstacle(t, obs.getRow(), obs.getCol());
-					updateObstacle(obs.getRow(), obs.getCol());
-				} else if (obs instanceof Target) {
+				} else if (obs.destroyAfterHit()) {
 					board.removeObstacle(obs.getRow(), obs.getCol());
-					updateObstacle(obs.getRow(), obs.getCol());
 					/*
 					 * } else if (obs instanceof Switch) {
 					 * broadcastSwitchChange(); updateObstacle(obs,
@@ -108,6 +106,7 @@ public class LevelRunner extends Thread {
 					 * obs.getCol()); } }
 					 */
 				}
+				updateObstacle(obs.getRow(), obs.getCol());
 			} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException ex) {
 				// TODO Auto-generated catch block
 				ex.printStackTrace();
@@ -242,7 +241,7 @@ public class LevelRunner extends Thread {
 				int mouseX = (int) event.getX();
 				int mouseY = (int) event.getY();
 				Obstacle obs = board.getObstacleAt(mouseX, mouseY);
-				if (obs != null) {
+				if (obs != null && obs.canClick()) {
 					obs.change();
 					view.updateCell(board, obs.getRow(), obs.getCol());
 				}

@@ -76,7 +76,7 @@ public class View {
 		if(obs[col][row] != null) {
 			ImageView im = new ImageView(obs[col][row].getImgURL());
 			images[col][row] = im;
-			gridPane.add(im, col, row, obs[col][row].colsOccupied(), 1);
+			gridPane.add(im, col, row, obs[col][row].colsOccupied(), obs[col][row].rowsOccupied());
 		} else if(clickMap[col][row] == null) {
 			ImageView im = new ImageView("file:resources/Empty.png");
 			images[col][row] = im;

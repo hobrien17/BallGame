@@ -28,10 +28,19 @@ public class BallStart extends Obstacle {
 		// TODO Auto-generated method stub
 		return 1;
 	}
+	
+	@Override
+	public int rowsOccupied() {
+		return 1;
+	}
 
 	@Override
 	public boolean destroyAfterHit() {
 		// TODO Auto-generated method stub
+		return false;
+	}
+	
+	public boolean canClick() {
 		return false;
 	}
 

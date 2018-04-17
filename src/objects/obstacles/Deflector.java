@@ -25,8 +25,16 @@ public class Deflector extends Obstacle {
 		return 1;
 	}
 	
+	public int rowsOccupied() {
+		return 1;
+	}
+	
 	public boolean destroyAfterHit() {
 		return false;
+	}
+	
+	public boolean canClick() {
+		return true;
 	}
 	
 	public String getImgURL() {

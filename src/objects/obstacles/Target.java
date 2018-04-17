@@ -23,8 +23,16 @@ public class Target extends Obstacle {
 		return 1;
 	}
 	
+	public int rowsOccupied() {
+		return 1;
+	}
+	
 	public boolean destroyAfterHit() {
 		return true;
+	}
+	
+	public boolean canClick() {
+		return false;
 	}
 	
 	public void change() {}
@@ -33,7 +41,6 @@ public class Target extends Obstacle {
 		try {
 			return Ball.class.getMethod("incTargetsHit");
 		} catch (NoSuchMethodException | SecurityException ex) {
-			// TODO Auto-generated catch block
 			ex.printStackTrace();
 			return null;
 		}

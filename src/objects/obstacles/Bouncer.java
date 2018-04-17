@@ -53,6 +53,10 @@ public class Bouncer extends Obstacle {
 		return 1;
 	}
 	
+	public int rowsOccupied() {
+		return 1;
+	}
+	
 	public String getImgURL() {
 		switch(type) {
 		case LR:
@@ -113,6 +117,10 @@ public class Bouncer extends Obstacle {
 	@Override
 	public boolean destroyAfterHit() {
 		return false;
+	}
+	
+	public boolean canClick() {
+		return true;
 	}
 	
 	@Override

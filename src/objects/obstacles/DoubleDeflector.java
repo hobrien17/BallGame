@@ -36,9 +36,17 @@ public abstract class DoubleDeflector extends Obstacle {
 	public int colsOccupied() {
 		return 2;
 	}
+	
+	public int rowsOccupied() {
+		return 1;
+	}
 
 	@Override
 	public boolean destroyAfterHit() {
 		return false;
+	}
+	
+	public boolean canClick() {
+		return true;
 	}
 }

@@ -134,6 +134,5 @@ public class Ball {
 	
 	public void incTargetsHit() {
 		targetsHit++;
-		System.out.println(targetsHit);
 	}
 }
