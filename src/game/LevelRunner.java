@@ -13,12 +13,7 @@ import leveldata.LevelLibrary;
 import leveldata.Tutorial;
 import objects.Ball;
 import objects.Board;
-import objects.obstacles.DoubleTarget;
-import objects.obstacles.Target;
 import objects.obstacles.Obstacle;
-import objects.obstacles.RedSwitch;
-import objects.obstacles.Switch;
-import objects.obstacles.SwitchedObstacle;
 
 public class LevelRunner extends Thread {
 	private Board board;
@@ -91,11 +86,7 @@ public class LevelRunner extends Thread {
 		if (ball.getCentreX() == xHit && ball.getCentreY() == yHit) {
 			try {
 				obs.getDirChange(ball.getDir()).invoke(ball);
-				if (obs instanceof DoubleTarget) {
-					DoubleTarget dt = (DoubleTarget) obs;
-					Obstacle t = dt.toTarget();
-					board.replaceObstacle(t, obs.getRow(), obs.getCol());
-				} else if (obs.destroyAfterHit()) {
+				if (obs.destroyAfterHit()) {
 					board.removeObstacle(obs.getRow(), obs.getCol());
 					/*
 					 * } else if (obs instanceof Switch) {
@@ -194,7 +185,6 @@ public class LevelRunner extends Thread {
 				timer--;
 				updateViewCounter();
 			} catch (InterruptedException ex) {
-				// TODO Auto-generated catch block
 				ex.printStackTrace();
 			}
 		}
@@ -212,7 +202,6 @@ public class LevelRunner extends Thread {
 				state = State.GAME_OVER;
 				gameOver();
 			} catch (InterruptedException ex) {
-				// TODO Auto-generated catch block
 				ex.printStackTrace();
 			}
 		}

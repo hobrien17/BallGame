@@ -61,7 +61,8 @@ public class Level {
 		int row = obs.get("row").getAsInt();
 		int col = obs.get("col").getAsInt();
 		
-		switch(obs.get("type").getAsString()) {
+		String type = obs.get("type").getAsString();
+		switch(type) {
 		case "DEFLECTOR_L":
 			return new Deflector(row, col, Deflector.Type.LEFT);
 		case "DEFLECTOR_R":
@@ -82,14 +83,12 @@ public class Level {
 			return new LeftVDeflector(row, col, VDeflector.Type.UP);
 		case "DEFLECTOR_LD":
 			return new LeftVDeflector(row, col, VDeflector.Type.DOWN);
-		case "TARGET":
-			return new Target(row, col);
 		case "BOUNCER_LR":
 			return new Bouncer(row, col, Bouncer.Type.LR);
 		case "BOUNCER_UD":
 			return new Bouncer(row, col, Bouncer.Type.UD);
-		case "DOUBLETARGET":
-			return new DoubleTarget(row, col);
+		case "TARGET":
+			return new Target(row, col);
 		case "ROTATOR_NW":
 			return new Rotator(row, col, Rotator.Type.NW);
 		case "ROTATOR_NE":
@@ -98,6 +97,8 @@ public class Level {
 			return new Rotator(row, col, Rotator.Type.SE);
 		case "ROTATOR_SW":
 			return new Rotator(row, col, Rotator.Type.SW);
+		case "SPIKEBLOCK":
+			return new SpikeBlock(row, col);
 		/*case "SPIKEBLOCK":
 			return new SpikeBlock(oRow, oCol);
 		case "SWITCH":
@@ -111,6 +112,11 @@ public class Level {
 		case "GATE":
 			return new Gate(oRow, oCol, Gate.Type.CLOSED);*/
 		default:
+			if(type.startsWith("TARGET:")) {
+				String[] spl = type.split(":");
+				int hits = Integer.parseInt(spl[1]);
+				return new Target(row, col, hits);
+			}
 			throw new IllegalArgumentException("Obstacle " + obs.get("type").getAsString() + " does not exist");
 		}
 	}

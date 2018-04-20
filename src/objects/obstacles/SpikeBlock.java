@@ -69,5 +69,9 @@ public class SpikeBlock extends Obstacle {
 	public boolean canClick() {
 		return false;
 	}
+	
+	public String toString() {
+		return "SPIKEBLOCK";
+	}
 
 }

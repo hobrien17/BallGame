@@ -127,7 +127,10 @@ public class CreatorController {
 				selected = new Target(-1, -1);
 				break;
 			case Y:
-				selected = new DoubleTarget(-1, -1);
+				selected = new Target(-1, -1, 2);
+				break;
+			case U:
+				selected = new Target(-1, -1, 3);
 				break;
 			case DIGIT1:
 				selected = new Deflector(-1, -1, Deflector.Type.LEFT);
@@ -157,6 +160,9 @@ public class CreatorController {
 				if(selected != null) {
 					selected.change();
 				}
+				break;
+			case Z:
+				selected = new SpikeBlock(-1, -1);
 				break;
 			case ESCAPE:
 				selected = null;

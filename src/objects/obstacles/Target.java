@@ -7,8 +7,17 @@ import objects.Board;
 
 public class Target extends Obstacle {
 	
-	public Target(int row, int col) {
+	private int initHits;
+	private int hits;
+	
+	public Target(int row, int col, int hits) {
 		super(row, col);
+		this.hits = hits;
+		this.initHits = hits;
+	}
+	
+	public Target(int row, int col) {
+		this(row, col, 1);
 	}
 	
 	public int getXHit(Ball.Dir incomingDir) {
@@ -28,18 +37,30 @@ public class Target extends Obstacle {
 	}
 	
 	public boolean destroyAfterHit() {
-		return true;
+		if(hits == 0) {
+			return true;
+		}
+		return false;
 	}
 	
 	public boolean canClick() {
 		return false;
 	}
 	
+	public int getHits() {
+		return hits;
+	}
+	
 	public void change() {}
 	
 	public Method getDirChange(Ball.Dir incomingDir) {
+		hits--;
 		try {
-			return Ball.class.getMethod("incTargetsHit");
+			if(hits == 0) {
+				return Ball.class.getMethod("incTargetsHit");
+			} else {
+				return Ball.class.getMethod("noRotate");
+			}
 		} catch (NoSuchMethodException | SecurityException ex) {
 			ex.printStackTrace();
 			return null;
@@ -47,14 +68,25 @@ public class Target extends Obstacle {
 	}
 	
 	public String getImgURL() {
-		return "file:resources/Target.png";
+		switch(hits) {
+		case 1:
+			return "file:resources/Target.png";
+		case 2:
+			return "file:resources/DoubleTarget.png";
+		default:
+			return "file:resources/TripleTarget.png";
+		}
 	}
 	
 	public Obstacle copy() {
-		return new Target(row, col);
+		return new Target(row, col, initHits);
 	}
 	
 	public String toString() {
-		return "TARGET";
+		if(hits == 1) {
+			return "TARGET";
+		} else {
+			return "TARGET:" + hits;
+		}
 	}
 }
